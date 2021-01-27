@@ -71,3 +71,5 @@ lib/generated_plugin_registrant.dart
 .idea/
 
 .DS_Store
+
+ios/
