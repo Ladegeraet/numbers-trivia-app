@@ -27,8 +27,7 @@ void main() {
     'should get trivia for the number from the repository',
     () async {
       // arrange
-      when(mockNumberTriviaRepository.getConcreteNumberTrivia(any))
-          .thenAnswer((_) async => Right(tNumberTrivia));
+      when(mockNumberTriviaRepository.getConcreteNumberTrivia(any)).thenAnswer((_) async => Right(tNumberTrivia));
 
       // act
       final result = await usecase.execute(number: tNumber);
