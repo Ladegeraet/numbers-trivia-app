@@ -4,5 +4,5 @@ import 'package:numbers_trivia_app/features/number_trivia/domain/entities/number
 
 abstract class NumberTriviaRepository {
   Future<Either<Failure, NumberTrivia>> getConcreteNumberTrivia(int number);
-  Future<Either<Failure, NumberTrivia>> getRadomNumberTrivia();
+  Future<Either<Failure, NumberTrivia>> getRandomNumberTrivia();
 }

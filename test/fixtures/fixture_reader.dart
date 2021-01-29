@@ -1,3 +1,5 @@
 import 'dart:io';
 
-String fixture(String name) => File('test/fixtures/$name').readAsStringSync();
+String fixture(String name) =>
+    File('/Users/tobiasoho/Git/numbers_trivia_app/test/fixtures/$name')
+        .readAsStringSync();
