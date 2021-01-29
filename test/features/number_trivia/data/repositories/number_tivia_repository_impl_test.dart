@@ -1,0 +1,34 @@
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
+import 'package:numbers_trivia_app/core/platform/network_info.dart';
+import 'package:numbers_trivia_app/features/number_trivia/data/datasources/number_triva_local_data_source.dart';
+import 'package:numbers_trivia_app/features/number_trivia/data/datasources/number_triva_remote_data_source.dart';
+import 'package:numbers_trivia_app/features/number_trivia/data/repositories/number_trivia_repository_impl.dart';
+import 'package:numbers_trivia_app/features/number_trivia/domain/repositories/number_trivia_repository.dart';
+
+class MockRemoteDataSource extends Mock
+    implements NumberTriviaRemoteDataSource {}
+
+class MockLocalDataSource extends Mock implements NumberTriviaLocalDataSource {}
+
+class MockNetworkInfo extends Mock implements NetworkInfo {}
+
+void main() {
+  NumberTriviaRepository repository;
+  MockRemoteDataSource mockRemoteDataSource;
+  MockLocalDataSource mockLocalDataSource;
+  MockNetworkInfo mockNetworkInfo;
+
+  setUp(() {
+    mockRemoteDataSource = MockRemoteDataSource();
+    mockLocalDataSource = MockLocalDataSource();
+    mockNetworkInfo = MockNetworkInfo();
+    repository = NumberTriviaRepositoryImpl(
+      remoteDataSource: mockRemoteDataSource,
+      localDataSource: mockLocalDataSource,
+      networkInfo: mockNetworkInfo,
+    );
+  });
+
+  test('description', () {});
+}
