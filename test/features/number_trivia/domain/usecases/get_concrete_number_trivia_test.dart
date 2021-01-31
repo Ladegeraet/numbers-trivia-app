@@ -6,7 +6,8 @@ import 'package:numbers_trivia_app/features/number_trivia/domain/entities/number
 import 'package:numbers_trivia_app/features/number_trivia/domain/repositories/number_trivia_repository.dart';
 import 'package:numbers_trivia_app/features/number_trivia/domain/usecases/get_concrete_number_trivia.dart';
 
-class MockNumberTriviaRepository extends Mock implements NumberTriviaRepository {}
+class MockNumberTriviaRepository extends Mock
+    implements NumberTriviaRepository {}
 
 void main() {
   GetConcreteNumberTrivia usecase;
@@ -14,7 +15,7 @@ void main() {
 
   setUp(() {
     mockNumberTriviaRepository = MockNumberTriviaRepository();
-    usecase = GetConcreteNumberTrivia(mockNumberTriviaRepository);
+    usecase = GetConcreteNumberTrivia(repository: mockNumberTriviaRepository);
   });
 
   final tNumber = 1;
@@ -27,7 +28,8 @@ void main() {
     'should get trivia for the number from the repository',
     () async {
       // arrange
-      when(mockNumberTriviaRepository.getConcreteNumberTrivia(any)).thenAnswer((_) async => Right(tNumberTrivia));
+      when(mockNumberTriviaRepository.getConcreteNumberTrivia(any))
+          .thenAnswer((_) async => Right(tNumberTrivia));
 
       // act
       final result = await usecase(Params(number: tNumber));

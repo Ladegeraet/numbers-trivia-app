@@ -5,13 +5,13 @@ import 'package:numbers_trivia_app/features/number_trivia/domain/entities/number
 import 'package:numbers_trivia_app/features/number_trivia/domain/repositories/number_trivia_repository.dart';
 
 class GetRandomNumberTrivia implements UseCase<NumberTrivia, NoParams> {
-  final NumberTriviaRepository _repository;
+  final NumberTriviaRepository repository;
 
-  GetRandomNumberTrivia(
-    this._repository,
-  );
+  GetRandomNumberTrivia({
+    this.repository,
+  });
 
   Future<Either<Failure, NumberTrivia>> call(NoParams params) async {
-    return await _repository.getRandomNumberTrivia();
+    return await repository.getRandomNumberTrivia();
   }
 }

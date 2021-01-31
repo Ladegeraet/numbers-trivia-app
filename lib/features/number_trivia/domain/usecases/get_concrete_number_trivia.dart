@@ -7,14 +7,14 @@ import 'package:numbers_trivia_app/features/number_trivia/domain/entities/number
 import 'package:numbers_trivia_app/features/number_trivia/domain/repositories/number_trivia_repository.dart';
 
 class GetConcreteNumberTrivia implements UseCase<NumberTrivia, Params> {
-  final NumberTriviaRepository _repository;
+  final NumberTriviaRepository repository;
 
-  GetConcreteNumberTrivia(
-    this._repository,
-  );
+  GetConcreteNumberTrivia({
+    this.repository,
+  });
 
   Future<Either<Failure, NumberTrivia>> call(Params params) async {
-    return await _repository.getConcreteNumberTrivia(params.number);
+    return await repository.getConcreteNumberTrivia(params.number);
   }
 }
 
