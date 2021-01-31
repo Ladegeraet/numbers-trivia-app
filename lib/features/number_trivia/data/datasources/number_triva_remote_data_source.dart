@@ -35,11 +35,17 @@ class NumberTriviaRemoteDataSourceImpl implements NumberTriviaRemoteDataSource {
   }
 
   Future<NumberTriviaModel> _getTrivaFromUrl(String url) async {
-    final response = await client.get(
-      url,
-      headers: {'Content-Type': 'application/json'},
-    );
-    if (response.statusCode == 200) {
+    http.Response response;
+    try {
+      response = await client.get(
+        url,
+        headers: {'Content-Type': 'application/json'},
+      );
+    } on Exception {
+      throw ServerException();
+    }
+
+    if (response != null && response.statusCode == 200) {
       return NumberTriviaModel.fromJson(json.decode(response.body));
     } else {
       throw ServerException();

@@ -14,7 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
 
-void setup() {
+Future<void> setup() async {
   // Features - Number Trivia
   // Bloc
   getIt.registerFactory(() => NumberTriviaBloc(
@@ -51,14 +51,14 @@ void setup() {
   getIt.registerLazySingleton(
     () => InputConverter(),
   );
+
   getIt.registerLazySingleton<NetworkInfo>(
     () => NetworkInfoImpl(dataConnectionChecker: getIt()),
   );
 
   // External
-  getIt.registerLazySingletonAsync<SharedPreferences>(
-    () => SharedPreferences.getInstance(),
-  );
+  final sharedPreferences = await SharedPreferences.getInstance();
+  getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 
   getIt.registerLazySingleton(() => http.Client());
 
